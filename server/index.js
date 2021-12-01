@@ -16,9 +16,11 @@ const path = require('path');
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
   app.use(express.static(path.join(__dirname, 'client/build')));
+
+  
 // Handle React routing, return all requests to React app
   app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'client/build', 'index.js'));
   });
 }
 
@@ -68,6 +70,6 @@ app.post('/submit', (req, res) => {
   });
 
 //binds and listens connection initiated on the 3001 server port 
-app.listen(port, () => {
-    console.log("server is running on port 3001");
+app.listen(port, _ => {
+  console.log(`server started on port ${port}`);
 });
